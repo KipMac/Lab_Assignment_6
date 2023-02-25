@@ -1,8 +1,21 @@
+//Kipling McLaren
+//Cop3502C-23Sprint0004
+//Lab Assignment 6
+//2/24/2023
 #include <stdio.h>
 
-int search(int numbers[], int low, int high, int value) 
+int search(int numbers[], int low, int high, int value)
 {
+    int mid =0;
+    if(low > high)
 	return -1;
+	mid = (low + high)/2;
+	if(value < numbers[mid])
+       return search(numbers, low, mid-1, value);
+    else if(value > numbers[mid])
+        return search(numbers, mid+1, high, value);
+    else return mid;
+
 }
 
 void printArray(int numbers[], int sz)
@@ -28,7 +41,7 @@ int main(void)
 	FILE* inFile = fopen("input.txt","r");
 
 	fscanf(inFile, " %d\n", &numInputs);
-	
+
 	while (numInputs-- > 0)
 	{
 		fscanf(inFile, " %d\n", &countOfNums);
